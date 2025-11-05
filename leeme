@@ -1,44 +1,52 @@
- Crear carpeta del proyecto
+🧾 Proyecto: Sistema de Administración Cafetería "Como dice el dicho"
+📂 1️⃣ Crear carpeta del proyecto
+
 Abre el explorador de archivos y crea una carpeta llamada:
- UIII_Cafeteria_0720
 
-2️⃣ Abrir la carpeta en VS Code
-En VS Code, selecciona Archivo → Abrir carpeta y elige UIII_Cafeteria_0720.
+UIII_Cafeteria_0720
 
-3️⃣ Abrir terminal integrada en VS Code
-En el menú superior, haz clic en Terminal → Nueva terminal.
+💻 2️⃣ Abrir la carpeta en VS Code
 
-4️⃣ Crear el entorno virtual
-En la terminal escribe:
+En VS Code, selecciona:
+
+Archivo → Abrir carpeta → UIII_Cafeteria_0720
+
+🧰 3️⃣ Abrir la terminal integrada
+
+En el menú superior:
+
+Terminal → Nueva terminal
+
+🐍 4️⃣ Crear el entorno virtual
 python -m venv .venv
 
+⚙️ 5️⃣ Activar el entorno virtual
 
-5️⃣ Activar el entorno virtual
 Windows:
+
 .venv\Scripts\activate
 
+
 Mac/Linux:
+
 source .venv/bin/activate
 
+🧩 6️⃣ Seleccionar el intérprete de Python
 
-6️⃣ Seleccionar el intérprete de Python
-Presiona Ctrl + Shift + P → escribe “Python: Select Interpreter” → elige .venv.
+Presiona:
 
-7️⃣ Instalar Django
-En la terminal escribe:
+Ctrl + Shift + P → “Python: Select Interpreter” → elige .venv
+
+🚀 7️⃣ Instalar Django
 pip install django
 
-
-8️⃣ Crear el proyecto base sin duplicar carpetas
+🏗️ 8️⃣ Crear el proyecto base (sin duplicar carpetas)
 django-admin startproject backend_Cafeteria .
 
-
-9️⃣ Crear la aplicación principal
+🧱 9️⃣ Crear la aplicación principal
 python manage.py startapp app_Cafeteria
 
-
-🔟 Verificar estructura de carpetas
-Debe quedar así:
+📁 🔟 Verificar estructura de carpetas
 UIII_Cafeteria_0720/
 │
 ├── backend_Cafeteria/
@@ -46,17 +54,16 @@ UIII_Cafeteria_0720/
 ├── .venv/
 └── manage.py
 
-
-11️⃣ Ejecutar el servidor por primera vez (puerto 8036)
+🖥️ 11️⃣ Ejecutar el servidor por primera vez (puerto 8036)
 python manage.py runserver 8036
 
+🌐 12️⃣ Abrir el enlace en el navegador
 
-12️⃣ Abrir el enlace en el navegador
-Copiar el link que aparece, ejemplo:
- http://127.0.0.1:8036/
+Ejemplo:
 
-13️⃣ Crear el archivo models.py en app_Cafeteria
-Copia el siguiente código:
+http://127.0.0.1:8036/
+
+🧾 13️⃣ Crear el archivo models.py en app_Cafeteria
 from django.db import models
 
 class Producto(models.Model):
@@ -104,14 +111,11 @@ class Orden(models.Model):
     def __str__(self):
         return f"Orden #{self.id} - {self.cliente.nombre}"
 
-
-14️⃣ Guardar y realizar las migraciones iniciales
+🧱 14️⃣ Migraciones iniciales
 python manage.py makemigrations
 python manage.py migrate
 
-
-15️⃣ Registrar los modelos en admin.py
-Dentro de app_Cafeteria/admin.py agrega:
+🧾 15️⃣ Registrar los modelos en admin.py
 from django.contrib import admin
 from .models import Producto, Empleado, Cliente, Orden
 
@@ -120,155 +124,110 @@ admin.site.register(Empleado)
 admin.site.register(Cliente)
 admin.site.register(Orden)
 
-
-16️⃣ Crear superusuario para acceder al panel de administración
+👤 16️⃣ Crear superusuario
 python manage.py createsuperuser
 
-
-17️⃣ Ejecutar nuevamente el servidor
+⚡ 17️⃣ Ejecutar nuevamente el servidor
 python manage.py runserver 8036
 
+🔐 18️⃣ Ingresar al panel de administración
+http://127.0.0.1:8036/admin
 
-18️⃣ Ingresar al panel de administración
-Abre el navegador y entra a:
- http://127.0.0.1:8036/admin
+🧩 19️⃣ Crear carpeta templates dentro de app_Cafeteria
+app_Cafeteria/templates/
 
-19️⃣ Crear carpeta templates dentro de app_Cafeteria
-Ruta:
- app_Cafeteria/templates/
-
-20️⃣ Dentro de templates, crear los archivos base:
+🗂️ 20️⃣ Crear los archivos base
 base.html
-
-
 header.html
-
-
 navbar.html
-
-
 footer.html
-
-
 inicio.html
 
-
-
-21️⃣ En base.html agregar Bootstrap (CSS y JS):
+🎨 21️⃣ Agregar Bootstrap en base.html
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-
-22️⃣ Crear la estructura visual del sistema en navbar.html
+🧭 22️⃣ Crear menú en navbar.html
 Menú principal:
-Sistema de Administración Cafetería
-
 
 Inicio
 
-
 Productos
-
 
 Agregar producto
 
-
 Ver productos
-
 
 Actualizar producto
 
-
 Borrar producto
-
 
 Clientes
 
-
 Agregar cliente
-
 
 Ver clientes
 
-
 Actualizar cliente
-
 
 Borrar cliente
 
-
 Órdenes
-
 
 Agregar orden
 
-
 Ver órdenes
-
 
 Actualizar orden
 
-
 Borrar orden
 
+🟢 Agrega íconos solo a las opciones principales.
 
-Agrega íconos a las opciones principales, no a los submenús.
-
-23️⃣ En footer.html, agregar derechos de autor
+🦶 23️⃣ Pie de página en footer.html
 <footer class="text-center fixed-bottom bg-light p-3">
   © {{ year }} | Creado por Ing. Eliseo Nava, CBTIS 128
 </footer>
 
-
-24️⃣ En inicio.html colocar una imagen e información de la cafetería
-Ejemplo:
+☕ 24️⃣ Página de inicio inicio.html
 <h2>Bienvenido al sistema de administración “Como dice el dicho”</h2>
 <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93" class="img-fluid rounded" alt="cafetería">
 
+🗂️ 25️⃣ Crear subcarpeta producto
+app_Cafeteria/templates/producto/
 
-25️⃣ Crear subcarpeta producto dentro de templates
-Ruta:
- app_Cafeteria/templates/producto/
-
-26️⃣ Crear archivos HTML del CRUD en esa carpeta:
+🧾 26️⃣ Crear los archivos del CRUD
 agregar_producto.html
-
-
 ver_productos.html
-
-
 actualizar_producto.html
-
-
 borrar_producto.html
 
 
-En ver_productos.html muestra los productos en una tabla con botones de ver, editar y borrar.
+💡 En ver_productos.html, muestra los productos en una tabla con botones de ver, editar y borrar.
 
-27️⃣ Crear archivo urls.py dentro de app_Cafeteria
-Y enlazarlo con las funciones CRUD desde views.py.
+🌐 27️⃣ Crear archivo urls.py en app_Cafeteria
 
-28️⃣ En backend_Cafeteria/settings.py, registrar la app
+Y enlazar las rutas con las funciones CRUD desde views.py.
+
+⚙️ 28️⃣ Registrar la app en backend_Cafeteria/settings.py
 INSTALLED_APPS = [
     ...,
     'app_Cafeteria',
 ]
 
+🔗 29️⃣ Configurar backend_Cafeteria/urls.py
 
-29️⃣ Configurar el archivo backend_Cafeteria/urls.py
-Para conectar el proyecto con app_Cafeteria.urls.
+Conecta el proyecto con app_Cafeteria.urls.
 
-30️⃣ Realizar nuevamente las migraciones finales
+🧱 30️⃣ Migraciones finales
 python manage.py makemigrations
 python manage.py migrate
 
-
-31️⃣ Iniciar el servidor en el puerto 8036
+🚀 31️⃣ Iniciar el servidor
 python manage.py runserver 8036
 
+✅ 32️⃣ Probar el sistema completo
 
-32️⃣ Probar el sistema completo
-Abrir en el navegador:
- http://127.0.0.1:8036/
- y comprobar que el CRUD de productos y la interfaz funcionen correctamente.
+Abre:
 
+http://127.0.0.1:8036/
